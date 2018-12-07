@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {transfomer} from "../helpers/transformers";
 //import config from 'config';
 //import { authHeader } from '../helpers/auth-header';
 
@@ -20,7 +21,7 @@ function findMedicos() {
     },
   };
   return axios(requestOptions).then(response =>
-    response.data.data
+    transfomer.selectFormat(response.data.data)
   )
 }
 
@@ -34,7 +35,7 @@ function findEspecialidades() {
     },
   };
   return axios(requestOptions).then(response =>
-    response.data.data
+    transfomer.selectFormat(response.data.data)
   )
 }
 
@@ -68,7 +69,7 @@ function findByEspecialidad(especialidad) {
 function reservarTurno(turnoId, pacienteId) {
   const requestOptions = {
     method: 'POST',
-    url: `http://turnos.test/api/turnos/reservar`,
+    url: `http://turnos.test/api/turnos/solicitar`,
     headers: {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',

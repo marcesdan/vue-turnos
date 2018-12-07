@@ -2,7 +2,13 @@ import {turnoService} from "../services/turnoService";
 import moment from "moment";
 moment.locale('es');
 
-const initialState = { all: [] };
+const initialState = {
+  all: [],
+  turnoItem: {},
+  loadingTable: false,
+  loadingModal: false,
+  loadingModal: false,
+};
 
 export const turnos = {
   namespaced: true,
